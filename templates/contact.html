@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Invite Friend</title>
+</head>
+<body>
+
+
+<h1>Contact</h1>
+
+<form role="form" action="" method="post">
+    {% csrf_token %}
+
+    {{ form.as_p }}
+
+    <p><label for="id_subject">Subject:</label>
+<input id="id_subject" type="text" name="subject" maxlength="100" /></p>
+
+<p><label for="id_message">Message:</label>
+<input type="text" name="message" id="id_message" /></p>
+
+<p><label for="id_sender">Sender:</label>
+<input type="email" name="sender" id="id_sender" /></p>
+
+    <form role="form" action="" method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+
+    <button type="submit">Submit</button>
+
+<p><label for="id_cc_myself">Cc myself:</label>
+<input type="checkbox" name="cc_myself" id="id_cc_myself" /></p>
+    <button type="submit">Submit</button>
+
+</form>
+
+
+</body>
+</html>

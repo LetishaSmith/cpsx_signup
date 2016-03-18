@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+Hi {{ user }}. You've logged in!
+Here is your room name: {{ room.room }}.
+Here is your key: {{ room.key }}.
+<h2>Your current balances:</h2><p>
+<table style="width:30%">
+<tr>
+<th bgcolor=gray>Room Name</th>
+<th bgcolor=gray>Room Key/th>
+{% for room in investor.balances_set.all %}
+<tr>
+<td>{{balance.currency_id}}</td>
+{% load humanize %}
+{{ balance.value|floatformat:2|intcomma }}
+</td>
+</tr>
+{% endfor %}
+</table>
+</center>
+<a href = "logout" >Click here to logout</a>
+</body>
+</html>
