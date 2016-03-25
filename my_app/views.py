@@ -44,13 +44,11 @@ def register(request):
     if request.method == 'POST':
         form = CustomUserCreationForm(request.POST)
         if form.is_valid():
-            new_user = form.save()
             rm_obj = Room(room = 'a', key='1')
             rm_obj.save()
+            new_user = form.save()
             participant_obj = Participant(user = new_user,rm_1 = rm_obj)
-            # Q: what if this order was reversed & foreign key object switched.
-            # therfore participant could be saved without a room
-            # then, rather then having dummy room & key info, room & key could immediately be set equal to participant_obj.id
+            participant_obj.save()
             return HttpResponseRedirect("/login")
     else:
         form = CustomUserCreationForm()
@@ -92,3 +90,7 @@ def contact(request):
         recipients.append(sender)
     send_mail(subject, message, sender, recipients)
     return HttpResponseRedirect('/thanks/')'''
+
+'''# Q: what if this order was reversed & foreign key object switched.
+            # therfore participant could be saved without a room
+            # then, rather then having dummy room & key info, room & key could immediately be set equal to participant_obj.id'''
